@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Détails</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div *ngIf="t != null">
+    
+    <div style="text-align: center;">
+      <ion-avatar style="width: 200px;height:200px; margin:auto; ">
+        <img [src]="t.vehicule.photoURL">
+      </ion-avatar>
+    </div>
+
+
+    <ion-label>
+      <h2>{{t.trajet}}</h2>
+      <h2>Chauffeur: <strong>{{t.vehicule.chauffeur | titlecase }}</strong></h2>
+      
+      <h3>en attente depuis <br> {{t.addDate.toDate() | date:'medium'}}</h3>
+      <ion-label *ngIf=" t.isOpen == true " color="success">en cours...</ion-label>
+      <ion-label *ngIf=" t.isOpen == false " color="danger">a démmarée.</ion-label>
+      
+    </ion-label>
+
+    
+
+      <div style="text-align: center;
+      font-size: 30px;">
+        {{ t.reservedPlases }} / {{t.nbrPlace}} <br>
+      place(s)
+
+
+      <div *ngIf="isReserved == true">
+        
+        <ion-button  color="primary" (click)="showRecu()" >imprimer recu</ion-button>
+      </div>
+      </div>
+    
+  </div>
+
+
+
+</ion-content>
+
+
+<ion-footer class="ion-no-border" (click)="bookPlace()" *ngIf="t != null">
+  <ion-button expand="block" color="warning" >Réserver</ion-button>
+</ion-footer>

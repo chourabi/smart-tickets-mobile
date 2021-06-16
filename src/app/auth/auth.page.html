@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Espace client</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div>
+      <div class="ion-padding" style="text-align: center;">
+        <img src="../../assets/logo.PNG" width="80%" />
+        <h1 style="text-align: center;">Authentification</h1>
+      </div>
+
+      <form [formGroup]="authForm" (ngSubmit)="authNow()" >
+
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating">Email</ion-label>
+              <ion-input formControlName="email" ></ion-input>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label position="floating">Mot de passe</ion-label>
+              <ion-input formControlName="password"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+              <ion-button expand="block" type="submit">Connexion</ion-button>
+            </ion-item>
+     
+          </ion-list>
+
+        
+
+        
+      </form>
+
+
+      <div class="ion-padding">
+        <ion-label color="danger">{{errMSG}}</ion-label>
+       </div>
+     
+       
+       <div class="ion-padding">
+        <ion-label >
+          Ou vous pouvez <a routerLink="/signup">créer un compte</a> si vous n'en avez pas gratuitement
+        </ion-label>
+       </div>
+       
+
+
+    <div>
+
+
+    </div>
+  </div>
+
+</ion-content>

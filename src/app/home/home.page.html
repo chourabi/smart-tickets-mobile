@@ -1,8 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Inbox
+      Smart ticket
     </ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button color="secondary" routerLink="/auth">
+        <ion-icon slot="icon-only" name="log-in-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+
   </ion-toolbar>
 </ion-header>
 
@@ -11,15 +19,23 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">
-        Inbox
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <img src="../../assets/bg.jpg" />
+  <div class="bg">
+    <h3></h3>
+    
+    <ion-list lines="nones">
+      <ion-list-header lines="inset">
+        <ion-label>Nos trajet</ion-label>
+      </ion-list-header>
+
+      <ion-item *ngFor="let l of lines">
+        <div class="line" [routerLink]="'/trips/'+l.line">
+          {{l.line}}
   
-  <ion-list>
-    <app-message *ngFor="let message of getMessages()" [message]="message"></app-message>
-  </ion-list>
+        </div>
+      </ion-item>
+    </ion-list>
+
+  </div>
 </ion-content>

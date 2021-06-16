@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Espace chauffeur</ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button color="secondary" (click)="logout()">
+        Déconnexion
+      </ion-button>
+    </ion-buttons>
+
+
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content *ngIf="trip != null">
+
+
+    <div class="places-block">
+  
+      <div class="count">
+        {{trip.reservedPlases}} / {{trip.nbrPlace}} <br>
+        place(s)
+  
+      </div>
+    </div>
+  
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="danger" (click)="updatePlaces(false)" >(<ion-icon name="remove-outline"></ion-icon> 1) place</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" color="success" (click)="updatePlaces(true)" >(<ion-icon name="add-outline"></ion-icon> 1 )place</ion-button>
+        </ion-col>
+        
+      </ion-row>
+    </ion-grid>
+  
+    
+  
+  
+  </ion-content>
+
+
+  <ion-content *ngIf="trip == null" class="ion-padding">
+    <ion-label>Veuillez attendre votre tour jusqu'à ce que l'administrateur vous place dans la liste des voyages</ion-label>
+  </ion-content>
+  
+  <ion-footer class="ion-no-border" (click)="goNowGo()" *ngIf="trip != null">
+    <ion-button expand="block" color="warning" >Départ !</ion-button>
+  </ion-footer>
+  

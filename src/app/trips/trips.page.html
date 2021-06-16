@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Voyages</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item *ngFor=" let t of trips " [routerLink]="'/trip-details/'+t.id" >
+      <ion-avatar slot="start">
+        <img [src]="t.data.vehicule.photoURL">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{t.data.trajet}}</h2>
+        <h2>Chauffeur: <strong>{{t.data.vehicule.chauffeur | titlecase }}</strong></h2>
+        
+        <h3>en attente depuis <br> {{t.data.addDate.toDate() | date:'medium'}}</h3>
+        <ion-label *ngIf=" t.data.isOpen == true " color="success">en cours...</ion-label>
+        <ion-label *ngIf=" t.data.isOpen == false " color="danger">a démmarée.</ion-label>
+        
+      </ion-label>
+      <ion-avatar slot="end">
+        {{ t.data.reservedPlases }} / {{t.data.nbrPlace}} <br>
+        place(s)
+      </ion-avatar>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

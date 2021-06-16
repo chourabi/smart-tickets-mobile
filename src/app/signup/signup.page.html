@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Créer un compte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" style="text-align: center;">
+
+  <img src="../../assets/logo.PNG" width="80%" />
+
+
+    <h1>Créer un compte</h1>
+
+
+  <form [formGroup]="authForm" (ngSubmit)="authNow()" >
+
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Nom prénom</ion-label>
+          <ion-input formControlName="fullname" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Télephone</ion-label>
+          <ion-input formControlName="phone" ></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Mot de passe</ion-label>
+          <ion-input formControlName="password"></ion-input>
+        </ion-item>
+        
+
+        <ion-item>
+          <ion-button expand="block" type="submit">Créer maintenant</ion-button>
+        </ion-item>
+ 
+      </ion-list>
+
+    
+
+    
+  </form>
+
+
+    <ion-label color="danger">{{errMSG}}</ion-label>
+
+</ion-content>
