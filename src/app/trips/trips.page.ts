@@ -16,21 +16,27 @@ export class TripsPage implements OnInit {
 
   ngOnInit() {
     this.line = this.route.snapshot.params.id;
-    this.watchTrips();
+    
+
+    this.db.collection('triptogo').valueChanges().subscribe((data)=>{
+      this.getTrips();
+    })
+
+    this
   }
 
-  watchTrips(){
-    this.db.collection('triptogo').valueChanges().subscribe((data:any)=>{
+  getTrips(){
+    this.trips= [];
+    this.db.collection('triptogo').get().subscribe((data:any)=>{
       console.log(data);
       
-      this.trips= [];
 
-      let tmp = data.filter((trip)=> trip.trajet === this.line );
+      let tmp = data.docs.filter((trip)=> trip.data().trajet === this.line );
       
 
       tmp.forEach((x:any) => {
           // get vehicule
-          var t = x;
+          var t = x.data();
 
           this.db.collection('vehicules').doc(t.vehicule).get().subscribe((res)=>{
             console.log(res.data());
